@@ -2,8 +2,6 @@ package org.oweis.Lear_ClientAPI.model;
 
 import javax.ws.rs.core.Response;
 
-import org.oweis.Lear_ClientAPI.RestAPIClientDesktop;
-
 public class NoBalise  implements BaliseState {
 
 	public NoBalise(){}

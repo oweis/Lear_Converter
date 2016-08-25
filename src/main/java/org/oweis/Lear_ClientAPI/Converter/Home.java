@@ -91,8 +91,9 @@ public class Home implements ActionListener {
 			int result = fileChooser.showOpenDialog(frame);
 			if (result == JFileChooser.APPROVE_OPTION) {
 			File selectedFile = fileChooser.getSelectedFile();
-			System.out.println("Selected file: " + selectedFile.getAbsolutePath());
-				}
+			System.out.println("Selected file: " + selectedFile.getName());
+			pathText.setText(selectedFile.getName());	
+			}
 			}
 		if(event.getSource() == saveButton ) ;
 	}

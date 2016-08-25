@@ -12,10 +12,9 @@ import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
-public class ReadXmlFile2 {
+public class WriterLear {
 	
 	// Input From Home
-	static String namePassByUser = "namePassByUser2";
 	
 	//Input From Connexion(after passing by home of course)
 //	static String pathFile = "C:/Files/txtXML.xml";
@@ -26,30 +25,34 @@ public class ReadXmlFile2 {
 	static String namePartNumber = "namePartNumber";
 	static String nameFixture = "nameFixture";
 	static String idFixture = "0";
+	File file;
+	String namePassByUser;
 	
-  public static void main(String[] args) {
-
-    try {
-
-	File file = new File("C:/Files/txtXML.xml");
-		
-	DocumentBuilder dBuilder = DocumentBuilderFactory.newInstance()
-                             .newDocumentBuilder();
-	Document doc = dBuilder.parse(file);
-
-	//System.out.println("Root element :" + doc.getDocumentElement().getNodeName());
-
-	if (doc.hasChildNodes()) {
-		printNote(doc.getChildNodes());
-
+	public WriterLear(File file,String namePassByUser){
+		this.file = file;
+		this.namePassByUser = namePassByUser;
 	}
-  }catch (Exception e){
-	System.out.println(e.getMessage());
-    }
+	
+	
+	
+	public void writeToDataBase(){  
+	    try {
+			
+		DocumentBuilder dBuilder = DocumentBuilderFactory.newInstance()
+								.newDocumentBuilder();
+		Document doc = dBuilder.parse(file);
 
-  }
+		if (doc.hasChildNodes()) {
+			printNote(doc.getChildNodes());
 
-  private static void printNote(NodeList nodeList) {
+		}
+	  }catch (Exception e){
+		System.out.println(e.getMessage());
+	    }
+	
+	    }
+
+  private void printNote(NodeList nodeList) {
 	  Balise balise = new Balise();
 	  
 	  String entityName = null;
@@ -101,7 +104,7 @@ public class ReadXmlFile2 {
 		}
     }
   }
-	public static void setIdsWhenPossible(String entityName,String attributName,String attributValue){		
+	public  void setIdsWhenPossible(String entityName,String attributName,String attributValue){		
 		RestAPIClientDesktop racd = new RestAPIClientDesktop();
 		 	
 		if(entityName.equals("PARTNUMBER") & attributName.equals("NAME")){

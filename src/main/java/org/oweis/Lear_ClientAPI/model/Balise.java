@@ -3,7 +3,6 @@ package org.oweis.Lear_ClientAPI.model;
 import javax.ws.rs.core.Response;
 
 import org.oweis.Lear_ClientAPI.RestAPIClientDesktop;
-import org.oweis.Lear_ClientAPI.Converter.ReadXmlFile2;
 
 public class Balise {
 	

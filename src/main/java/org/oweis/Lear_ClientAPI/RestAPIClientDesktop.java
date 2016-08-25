@@ -40,15 +40,12 @@ public class RestAPIClientDesktop {
 				request(MediaType.APPLICATION_JSON).
 				get(Family.class);
 	
-		return family;
+	return family;
 	}
 	
-	public Boolean isNamePassByUserExist(String namePassByUser){
-		int resultat = -1;
-		resultat = getFamily(namePassByUser).getId();
-		if(resultat == -1) return false;
-		else return true;
-		}
+	public Boolean assertNamePassByUserExist(String namePassByUser){
+			return false;
+			}
 	
 	public Family getFamily(int id){
 		family = valueTarget.
