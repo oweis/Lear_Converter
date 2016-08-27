@@ -1,9 +1,13 @@
 package org.oweis.Lear_ClientAPI;
 
+import java.util.ArrayList;
+
+import javax.ws.rs.Path;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.Entity;
 import javax.ws.rs.client.WebTarget;
+import javax.ws.rs.core.GenericType;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
@@ -17,6 +21,8 @@ public class RestAPIClientDesktop {
 	Pin pin;
 	Wire wire;
 	Splice splice;
+	
+	ArrayList<Wire> wires = new ArrayList<>();
 	
 	Client client = ClientBuilder.newClient();
 	WebTarget baseTarget = client.target("http://localhost:8080/Lear_API/webapi/");
@@ -84,6 +90,19 @@ public class RestAPIClientDesktop {
 				get(Fixture.class);
 	
 		return fixture;
+	}
+	@Path("/search/idPartNumber/{idPartNumber}")
+
+	public ArrayList<Wire> getAllWiresByIdPartNumber(int idPartNumber){
+		wires = valueTarget.
+				resolveTemplate("entityName","wires").
+				resolveTemplate("functionName", "search").
+				resolveTemplate("attributName", "idPartNumber").
+				resolveTemplate("attributValue",idPartNumber).
+				request(MediaType.APPLICATION_JSON).
+				get(new GenericType<ArrayList<Wire>>(){});
+	
+		return wires;
 	}
 	
 	public Response addFamily(Family newFamily){

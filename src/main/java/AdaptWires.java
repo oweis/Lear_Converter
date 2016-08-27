@@ -1,5 +1,3 @@
-
-
 import java.util.ArrayList;
 
 import org.oweis.Lear_ClientAPI.model.Wire;
@@ -13,7 +11,7 @@ public class AdaptWires {
     ArrayList<Wire> wiresWithSpliceList;
     ArrayList<Wire> wiresWithSameSpliceList = new ArrayList<>();
     ArrayList<String> namesSpliceList = new ArrayList<>();
-    String connector, color, pin;
+    String connector, color, pin,splice;
 
     public AdaptWires(ArrayList<Wire> wiresList) {
         this.wiresList = wiresList;
@@ -23,6 +21,7 @@ public class AdaptWires {
     public ArrayList<Wire> updateWiresList() {
 
         wiresWithSpliceList = getWiresWithSplice();
+        
 
         removeWiresWithSpliceListFromWiresList();
 
@@ -66,9 +65,9 @@ public class AdaptWires {
         for (Wire wire : wiresList) {
             if (wire.getConnector_A().equals("") || wire.getConnector_B().equals("")) {
                 wires.add(wire);
-                System.out.println(wire.getNameWire());
             }
         }
+        System.out.println("Wires With Splice : "+wires.size());
         return wires;
     }
 
@@ -116,12 +115,14 @@ public class AdaptWires {
         connector = wiresWithSameSpliceList.get(0).getConnector_A();
         color = wiresWithSameSpliceList.get(0).getColor_A();
         pin = wiresWithSameSpliceList.get(0).getPin_A();
+        splice = "";
     }
 
     public void setValuesB(){
         connector = wiresWithSameSpliceList.get(0).getConnector_B();
         color = wiresWithSameSpliceList.get(0).getColor_B();
         pin = wiresWithSameSpliceList.get(0).getPin_B();
+        splice = "";
     }
 
     public void setPartB(Wire wire) {
@@ -129,6 +130,9 @@ public class AdaptWires {
         wire.setConnector_B(connector);
         wire.setColor_B(color);
         wire.setPin_B(pin);
+        wire.setSplice_B(splice);
+        wire.setSplice_A(splice);
+
     }
 
     public void setPartA(Wire wire) {
@@ -136,6 +140,9 @@ public class AdaptWires {
         wire.setConnector_A(connector);
         wire.setColor_A(color);
         wire.setPin_A(pin);
+        wire.setSplice_A(splice);
+        wire.setSplice_B(splice);
+
     }
 
     public boolean assertNameExist(ArrayList<String> nameList, String name) {

@@ -15,10 +15,10 @@ import org.w3c.dom.NodeList;
 public class ReadXmlFile2 {
 	
 	// Input From Home
-	static String namePassByUser = "namePassByUser2";
+	static String namePassByUser = "Family 4";
 	
 	//Input From Connexion(after passing by home of course)
-//	static String pathFile = "C:/Files/txtXML.xml";
+	//static String pathFile = "C:/Files/txtXML.xml";
 	
 
 	static String idFamily = "0";
