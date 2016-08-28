@@ -23,6 +23,7 @@ public class RestAPIClientDesktop {
 	Splice splice;
 	
 	ArrayList<Wire> wires = new ArrayList<>();
+	ArrayList<PartNumber_Fixture> partNumber_Fixtures = new ArrayList<>();
 	
 	Client client = ClientBuilder.newClient();
 	WebTarget baseTarget = client.target("http://localhost:8080/Lear_API/webapi/");
@@ -91,7 +92,7 @@ public class RestAPIClientDesktop {
 	
 		return fixture;
 	}
-	@Path("/search/idPartNumber/{idPartNumber}")
+	
 
 	public ArrayList<Wire> getAllWiresByIdPartNumber(int idPartNumber){
 		wires = valueTarget.
@@ -104,6 +105,20 @@ public class RestAPIClientDesktop {
 	
 		return wires;
 	}
+	
+	public ArrayList<PartNumber_Fixture> addAllPartNumber_Fixtures(int idFamily,int idPartNumber){
+			partNumber_Fixtures = valueTarget2.
+				resolveTemplate("entityName","partnumber_fixtures").
+				resolveTemplate("functionName", "search").
+				resolveTemplate("attributName", "idFamily").
+				resolveTemplate("attributValue",idFamily).
+				resolveTemplate("attributName2", "idPartNumber").
+				resolveTemplate("attributValue2",idPartNumber).
+				request(MediaType.APPLICATION_JSON)
+				.get(new GenericType<ArrayList<PartNumber_Fixture>>(){});
+	return partNumber_Fixtures;
+	}
+	
 	
 	public Response addFamily(Family newFamily){
 		return  entityTarget.resolveTemplate("entityName","familys").request().post(Entity.json(newFamily));
@@ -129,6 +144,6 @@ public class RestAPIClientDesktop {
 		return	entityTarget.resolveTemplate("entityName","pins").request().post(Entity.json(newPin));
 	}
 
-
+	
 }
 

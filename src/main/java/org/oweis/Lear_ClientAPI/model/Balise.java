@@ -41,7 +41,7 @@ public class Balise {
 		else if(value.equals("WIRE"))  this.setBaliseState(isWire);
 		else if(value.equals("FIXTURE"))  this.setBaliseState(isFixture);
 		else if(value.equals("SPLICE"))  this.setBaliseState(isSplice);
-		else if(value.equals("PIN"))  this.setBaliseState(isPin);
+		//else if(value.equals("PIN"))  this.setBaliseState(isPin);
 		else this.setBaliseState(noBalise);
 	}
 	

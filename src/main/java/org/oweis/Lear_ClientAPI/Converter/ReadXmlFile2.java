@@ -1,6 +1,7 @@
 package org.oweis.Lear_ClientAPI.Converter;
 
 import java.io.File;
+import java.util.ArrayList;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -15,7 +16,7 @@ import org.w3c.dom.NodeList;
 public class ReadXmlFile2 {
 	
 	// Input From Home
-	static String namePassByUser = "Family 4";
+	static String namePassByUser = "Family 1";
 	
 	//Input From Connexion(after passing by home of course)
 	//static String pathFile = "C:/Files/txtXML.xml";
@@ -26,6 +27,7 @@ public class ReadXmlFile2 {
 	static String namePartNumber = "namePartNumber";
 	static String nameFixture = "nameFixture";
 	static String idFixture = "0";
+	static ArrayList<Integer> arrayListIdPartNumber = new ArrayList<>();
 	
   public static void main(String[] args) {
 
@@ -37,8 +39,6 @@ public class ReadXmlFile2 {
                              .newDocumentBuilder();
 	Document doc = dBuilder.parse(file);
 
-	//System.out.println("Root element :" + doc.getDocumentElement().getNodeName());
-
 	if (doc.hasChildNodes()) {
 		printNote(doc.getChildNodes());
 
@@ -46,8 +46,11 @@ public class ReadXmlFile2 {
   }catch (Exception e){
 	System.out.println(e.getMessage());
     }
-
-  }
+    RestAPIClientDesktop restAPIClientDesktop = new RestAPIClientDesktop();
+    for(int idPartNumber : arrayListIdPartNumber){
+    restAPIClientDesktop.addAllPartNumber_Fixtures(Integer.parseInt(idFamily), idPartNumber);
+    	}
+    }
 
   private static void printNote(NodeList nodeList) {
 	  Balise balise = new Balise();
@@ -112,13 +115,14 @@ public class ReadXmlFile2 {
 			namePartNumber = attributValue;
 			Integer idPartNumberInt = racd.getPartNumber(Integer.parseInt(idFamily),namePartNumber).getId();
 			idPartNumber = idPartNumberInt.toString();
+			arrayListIdPartNumber.add(idPartNumberInt);
 			}
 		if(entityName.equals("FIXTURE") & attributName.equals("FIXTUREID")){
 			nameFixture = attributValue;
 			} 
 		if(entityName.equals("PIN")){
-			Integer idFixtureInt = racd.getFixture(Integer.parseInt(idFamily), nameFixture).getId();
-			idFixture = idFixtureInt.toString();
+			//Integer idFixtureInt = racd.getFixture(Integer.parseInt(idFamily), nameFixture).getId();
+			//idFixture = idFixtureInt.toString();
 			}
 		}
  
