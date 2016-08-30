@@ -15,7 +15,7 @@ import org.oweis.Lear_ClientAPI.model.*;
 
 public class RestAPIClientDesktop {
 	
-	Family family;
+	Family family = new Family();
 	PartNumber partNumber;
 	Fixture fixture;
 	Pin pin;
@@ -51,7 +51,11 @@ public class RestAPIClientDesktop {
 	}
 	
 	public Boolean assertNamePassByUserExist(String namePassByUser){
-			return false;
+		Family newFamily = new Family();
+		newFamily = getFamily(namePassByUser);
+		
+		return newFamily != null;
+	//	return getFamily(namePassByUser).equals(null);	
 			}
 	
 	public Family getFamily(int id){
