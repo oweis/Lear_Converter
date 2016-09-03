@@ -43,31 +43,30 @@ public class HomeLear implements ActionListener {
 		
 		headerPanel.setLayout(new GridLayout(1,1));
 		headerPanel.setSize(50,200);
+	
 		controlPanel.setLayout(new GridLayout(2,2));
-		checkBoxPanel.setLayout(new GridLayout(1,1));
-		checkBoxPanel.setSize(50,200);
 		buttonsPanel.setLayout(new GridLayout(1,2));
 		
-		frame = new JFrame();
-		frame.setLayout(new GridLayout(3,1));
+		frame = new JFrame("Lear BIP");
 		frame.setSize(600, 200);
+	frame.setLayout(new GridLayout(2,1));
 		
 		 infoText = new JTextArea("Choisir un fichier à importer");
 		
-		 pathLabel = new JLabel("Path File : ");
+		 pathLabel = new JLabel("  Chemin du fichier : ");
 		
 		 pathText = new JTextArea(" . . . ");
 		
-		 familyLabel = new JLabel("Family Name : ");
+		 familyLabel = new JLabel("  Nom de la famille : ");
 		
 		 familyText = new JTextArea(" . . . ");
+		 
 		
-		 checkBox = new JCheckBox("Keep Xml File");
 		
-		importButton = new JButton("Import File");
+		importButton = new JButton("Importer un fichier");
 		importButton.addActionListener(this);
 		
-		saveButton = new JButton("Save");
+		saveButton = new JButton("Enregistrer");
 		saveButton.addActionListener(this);
 		
 		headerPanel.add(infoText);
@@ -77,12 +76,11 @@ public class HomeLear implements ActionListener {
 		controlPanel.add(familyLabel);
 		controlPanel.add(familyText);
 		
-		checkBoxPanel.add(checkBox);
 		
 		buttonsPanel.add(importButton);
 		buttonsPanel.add(saveButton);
 		
-		frame.add(headerPanel);
+		//frame.add(headerPanel);
 		frame.add(controlPanel);
 		//frame.add(checkBoxPanel);
 		frame.add(buttonsPanel);
@@ -168,8 +166,8 @@ public class HomeLear implements ActionListener {
 			
 			WriterLear writerLear = new WriterLear(fileOutput, namePassByUser);
 			writerLear.writeToDataBase();
-			progressSample.hideBar();
 			showFrame();
+			progressSample.hideBar();
 			}
 		};
 	}
