@@ -2,7 +2,6 @@ package org.oweis.Lear_ClientAPI;
 
 import java.util.ArrayList;
 
-import javax.ws.rs.Path;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.Entity;
@@ -18,7 +17,7 @@ public class RestAPIClientDesktop {
 	Family family = new Family();
 	PartNumber partNumber;
 	Fixture fixture;
-	Pin pin;
+
 	Wire wire;
 	Splice splice;
 	
@@ -144,9 +143,7 @@ public class RestAPIClientDesktop {
 		return	entityTarget.resolveTemplate("entityName","fixtures").request().post(Entity.json(newFixture));
 	}
 	
-	public Response addPin(Pin newPin){
-		return	entityTarget.resolveTemplate("entityName","pins").request().post(Entity.json(newPin));
-	}
+	
 
 	
 }

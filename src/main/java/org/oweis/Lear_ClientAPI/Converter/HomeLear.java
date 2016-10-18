@@ -14,7 +14,6 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
-import javax.swing.plaf.ProgressBarUI;
 
 import org.oweis.Lear_ClientAPI.RestAPIClientDesktop;
 import org.oweis.Lear_ClientAPI.ProgressSample;;
@@ -134,10 +133,9 @@ public class HomeLear implements ActionListener {
 			else if(namePassByUser.equals("") || namePassByUser.equals(null)){
 				JOptionPane.showMessageDialog(frame, "S'il vous plait! choisissez un nom.");
 			}
-			else if(restAPIClientDesktop.assertNamePassByUserExist(namePassByUser)){
-				JOptionPane.showMessageDialog(frame, "Le nom que vous avez choisi est deja existe. essayer avec un autre nom");
-
-			}
+		//	else if(restAPIClientDesktop.assertNamePassByUserExist(namePassByUser)){
+			//	JOptionPane.showMessageDialog(frame, "Le nom que vous avez choisi est deja existe. essayer avec un autre nom");
+		//}
 			else {
 
 				ProgressSample progressSample = new ProgressSample();

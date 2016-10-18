@@ -1,6 +1,6 @@
 package org.oweis.Lear_ClientAPI.model;
 
-import java.util.Date;
+
 
 import javax.ws.rs.core.Response;
 
@@ -15,24 +15,13 @@ public class PartNumber implements BaliseState {
 	private String nameUsedInClient;
 	private String level;
 	private String date;
-	private String extra;
-	private Date date_creation = new Date();
-	
 	
 	public PartNumber() {
 	
 	}
 	
-	public Date getDate_creation() {
-		return date_creation;
-	}
-
-	public void setDate_creation(Date date_creation) {
-		this.date_creation = date_creation;
-	}
-
 	public PartNumber(int id,int idFamily, String nameUsedInLear, String nameUsedInClient,
-			String level, String date, String extra) {
+			String level, String date) {
 		
 		this.id = id;
 		this.idFamily = idFamily;
@@ -40,7 +29,7 @@ public class PartNumber implements BaliseState {
 		this.nameUsedInClient = nameUsedInClient;
 		this.level = level;
 		this.date = date;
-		this.extra = extra;
+		
 			}
 
 	public int getId() {
@@ -72,34 +61,20 @@ public class PartNumber implements BaliseState {
 		this.nameUsedInClient = nameUsedInClient;
 	}
 
-
 	public String getLevel() {
 		return level;
 	}
-
 
 	public void setLevel(String level) {
 		this.level = level;
 	}
 
-
 	public String getDate() {
 		return date;
 	}
 
-
 	public void setDate(String date) {
 		this.date = date;
-	}
-
-
-	public String getExtra() {
-		return extra;
-	}
-
-
-	public void setExtra(String extra) {
-		this.extra = extra;
 	}
 
 	public int getIdFamily() {
@@ -121,7 +96,7 @@ public class PartNumber implements BaliseState {
 		if(attribut.equals("CLIENTPN")) nameUsedInClient = value;
 		if(attribut.equals("LEVEL")) level = value;
 		if(attribut.equals("DATE")) date = value;
-		if(attribut.equals("EXTRA")) extra = value;
+
 		if(attribut.equals("idFamily")) idFamily = Integer.parseInt(value);
 	}
 	
@@ -132,7 +107,7 @@ public class PartNumber implements BaliseState {
 		System.out.println("NameUsedInClient : " + nameUsedInClient);
 		System.out.println("Date : " + date);
 		System.out.println("Level : " + level);
-		System.out.println("Extra : " + extra);
+
 	}
 	
 

@@ -27,7 +27,6 @@ public class SaverLear {
 		    
 	}
 	
-	//Home home = new Home();
 	private String setFileName(String fileInput){
 		 Date date = new Date();
 		 

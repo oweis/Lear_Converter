@@ -1,7 +1,5 @@
  package org.oweis.Lear_ClientAPI.model;
 
-import java.util.Date;
-
 import javax.ws.rs.core.Response;
 
 import org.oweis.Lear_ClientAPI.RestAPIClientDesktop;
@@ -22,16 +20,7 @@ public class Wire implements BaliseState{
 	private String pin_B;
 	private String color_B;
 	private String splice_B;
-	private Date date_creation = new Date();
 
-
-	public Date getDate_creation() {
-		return date_creation;
-	}
-
-	public void setDate_creation(Date date_creation) {
-		this.date_creation = date_creation;
-	}
 
 	public Wire() {
 		// TODO Auto-generated constructor stub

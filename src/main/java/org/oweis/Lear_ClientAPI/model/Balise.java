@@ -10,7 +10,7 @@ public class Balise {
 	BaliseState isPartNumber;
 	BaliseState isWire;
 	BaliseState isFixture;
-	BaliseState isPin;
+
 	BaliseState isSplice;
 	BaliseState noBalise;
 	BaliseState baliseState;
@@ -22,7 +22,7 @@ public class Balise {
 		isPartNumber = new PartNumber();
 		isWire = new Wire();
 		isFixture = new Fixture();
-		isPin = new Pin();
+
 		isSplice = new Splice();
 		noBalise = new NoBalise();
 	}
@@ -41,7 +41,6 @@ public class Balise {
 		else if(value.equals("WIRE"))  this.setBaliseState(isWire);
 		else if(value.equals("FIXTURE"))  this.setBaliseState(isFixture);
 		else if(value.equals("SPLICE"))  this.setBaliseState(isSplice);
-		//else if(value.equals("PIN"))  this.setBaliseState(isPin);
 		else this.setBaliseState(noBalise);
 	}
 	

@@ -127,10 +127,7 @@ public class WriterLear {
 		if(entityName.equals("FIXTURE") & attributName.equals("FIXTUREID")){
 			nameFixture = attributValue;
 			} 
-		if(entityName.equals("PIN")){
-			/*Integer idFixtureInt = racd.getFixture(Integer.parseInt(idFamily), nameFixture).getId();
-			idFixture = idFixtureInt.toString();*/
-			}
+		
 		}
  
 }

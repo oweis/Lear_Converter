@@ -10,17 +10,17 @@ public class Fixture implements BaliseState{
 	private int id;
 	private int idFamily;
 	private String nameFixture;
-	private String drawing;
+
 	
 	public Fixture() {
 		
 	}
 	
-	public Fixture(int id,int idFamily, String nameFixture, String drawing) {
+	public Fixture(int id,int idFamily, String nameFixture) {
 		this.id = id;
 		this.idFamily = idFamily;
 		this.nameFixture = nameFixture;
-		this.drawing = drawing;
+	
 	}
 	
 	public int getIdFamily() {
@@ -47,13 +47,7 @@ public class Fixture implements BaliseState{
 		this.nameFixture = nameFixture;
 	}
 
-	public String getDrawing() {
-		return drawing;
-	}
 
-	public void setDrawing(String drawing) {
-		this.drawing = drawing;
-	}
 
 
 	public void getMyName() {
@@ -61,7 +55,6 @@ public class Fixture implements BaliseState{
 	}
 	public void getValuesForBalise(String attribut,String value){
 		if(attribut.equals("FIXTUREID")) nameFixture = value;
-		if(attribut.equals("DRAWING")) drawing = value;
 		if(attribut.equals("idFamily")) idFamily=Integer.parseInt(value);
 	}
 	
