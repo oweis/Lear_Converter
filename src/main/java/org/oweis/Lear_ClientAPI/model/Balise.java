@@ -1,16 +1,14 @@
 package org.oweis.Lear_ClientAPI.model;
 
 import javax.ws.rs.core.Response;
-
 import org.oweis.Lear_ClientAPI.RestAPIClientDesktop;
 
 public class Balise {
 	
 	BaliseState isFamily;
-	BaliseState isPartNumber;
+	BaliseState isCable;
 	BaliseState isWire;
-	BaliseState isFixture;
-
+	BaliseState isConnector;
 	BaliseState isSplice;
 	BaliseState noBalise;
 	BaliseState baliseState;
@@ -19,10 +17,9 @@ public class Balise {
 
 	public Balise(){
 		isFamily = new Family();
-		isPartNumber = new PartNumber();
+		isCable = new Cable();
 		isWire = new Wire();
-		isFixture = new Fixture();
-
+		isConnector = new Connector();
 		isSplice = new Splice();
 		noBalise = new NoBalise();
 	}
@@ -37,9 +34,9 @@ public class Balise {
 	
 	public void check(String value){ 
 		if(value.equals("HEADER")) this.setBaliseState(isFamily);
-		else if(value.equals("PARTNUMBER"))  this.setBaliseState(isPartNumber);
+		else if(value.equals("PARTNUMBER"))  this.setBaliseState(isCable);
 		else if(value.equals("WIRE"))  this.setBaliseState(isWire);
-		else if(value.equals("FIXTURE"))  this.setBaliseState(isFixture);
+		else if(value.equals("FIXTURE"))  this.setBaliseState(isConnector);
 		else if(value.equals("SPLICE"))  this.setBaliseState(isSplice);
 		else this.setBaliseState(noBalise);
 	}

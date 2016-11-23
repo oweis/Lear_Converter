@@ -9,7 +9,7 @@ public class Wire implements BaliseState{
 
 	private int id;
 	private int idFamily;
-	private int idPartNumber;
+	private int idCable;
 	private String nameWire;
 	private String color;
 	private String connector_A;
@@ -26,12 +26,12 @@ public class Wire implements BaliseState{
 		// TODO Auto-generated constructor stub
 	}
 	
-		public Wire(int id,int idFamily,int idPartNumber, String nameWire, String color, String connector_A,
+		public Wire(int id,int idFamily,int idCable, String nameWire, String color, String connector_A,
 			String pin_A, String color_A,String splice_A, String connector_B, String pin_B,
 			String color_B,String splice_B) {
 		this.id = id;
 		this.idFamily = idFamily;
-		this.idPartNumber = idPartNumber;
+		this.idCable = idCable;
 		this.nameWire = nameWire;
 		this.color = color;
 		this.connector_A = connector_A;
@@ -68,12 +68,12 @@ public class Wire implements BaliseState{
 		this.splice_B = splice_B;
 	}
 
-	public int getIdPartNumber() {
-		return idPartNumber;
+	public int getIdCable() {
+		return idCable;
 	}
 
-	public void setIdPartNumber(int idPartNumber) {
-		this.idPartNumber = idPartNumber;
+	public void setIdCable(int idCable) {
+		this.idCable = idCable;
 	}
 
 	public int getId() {
@@ -160,7 +160,7 @@ public class Wire implements BaliseState{
 		if(attribut.equals("SPLICE_B")) splice_B = value;
 		if(attribut.equals("COLOR_B")) color_B = value;
 		if(attribut.equals("idFamily")) idFamily = Integer.parseInt(value);
-		if(attribut.equals("idPartNumber")) idPartNumber = Integer.parseInt(value);
+		if(attribut.equals("idPartNumber")) idCable = Integer.parseInt(value);
 	}
 	
 

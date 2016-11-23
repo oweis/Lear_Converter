@@ -6,7 +6,7 @@ import javax.ws.rs.core.Response;
 
 import org.oweis.Lear_ClientAPI.RestAPIClientDesktop;
 
-public class PartNumber implements BaliseState {
+public class Cable implements BaliseState {
 	
 	
 	private int id;
@@ -16,11 +16,11 @@ public class PartNumber implements BaliseState {
 	private String level;
 	private String date;
 	
-	public PartNumber() {
+	public Cable() {
 	
 	}
 	
-	public PartNumber(int id,int idFamily, String nameUsedInLear, String nameUsedInClient,
+	public Cable(int id,int idFamily, String nameUsedInLear, String nameUsedInClient,
 			String level, String date) {
 		
 		this.id = id;
@@ -90,7 +90,7 @@ public class PartNumber implements BaliseState {
 		
 	}
 
-	PartNumber partNumber;
+	Cable partNumber;
 	public void getValuesForBalise(String attribut,String value){
 		if(attribut.equals("NAME")) nameUsedInLear = value;
 		if(attribut.equals("CLIENTPN")) nameUsedInClient = value;
@@ -102,7 +102,7 @@ public class PartNumber implements BaliseState {
 	
 	public void showValues(){
 		System.out.println(" ");
-		System.out.println("INFOS PARTNUMBER : ");
+		System.out.println("INFOS CABLE : ");
 		System.out.println("NameUsedInLear : " + nameUsedInLear);
 		System.out.println("NameUsedInClient : " + nameUsedInClient);
 		System.out.println("Date : " + date);
@@ -114,6 +114,6 @@ public class PartNumber implements BaliseState {
 	
 	public Response saveBalise() {
 		RestAPIClientDesktop racd = new RestAPIClientDesktop();
-		return racd.addPartNumber(this);		
+		return racd.addCable(this);		
 	}
 }

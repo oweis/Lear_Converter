@@ -22,13 +22,13 @@ public class WriterLear {
 	
 
 	static String idFamily = "0";
-	static String idPartNumber = "0" ;
-	static String namePartNumber = "namePartNumber";
-	static String nameFixture = "nameFixture";
-	static String idFixture = "0";
+	static String idCable = "0" ;
+	static String nameCable = "nameCable";
+	static String nameConnector = "nameConnector";
+	static String idConnector = "0";
 	File file;
 	String namePassByUser;
-	static ArrayList<Integer> arrayListIdPartNumber = new ArrayList<>();
+	static ArrayList<Integer> arrayListIdCable = new ArrayList<>();
 
 	
 	public WriterLear(File file,String namePassByUser){
@@ -53,8 +53,8 @@ public class WriterLear {
 		System.out.println(e.getMessage());
 	    }
 	    RestAPIClientDesktop restAPIClientDesktop = new RestAPIClientDesktop();
-	    for(int idPartNumber : arrayListIdPartNumber){
-	    restAPIClientDesktop.addAllPartNumber_Fixtures(Integer.parseInt(idFamily), idPartNumber);
+	    for(int idCable : arrayListIdCable){
+	    restAPIClientDesktop.addAllCable_Connectors(Integer.parseInt(idFamily), idCable);
 	    	}
 	    }
 
@@ -92,8 +92,8 @@ public class WriterLear {
 					
 			 	balise.getValuesForBalise("namePassByUser", namePassByUser);
 				balise.getValuesForBalise("idFamily", idFamily);
-				balise.getValuesForBalise("idPartNumber", idPartNumber);
-				balise.getValuesForBalise("idFixture",idFixture);
+				balise.getValuesForBalise("idPartNumber", idCable);
+				balise.getValuesForBalise("idFixture",idConnector);
 				
 			
 				balise.getValuesForBalise(attributName,attributValue);
@@ -118,14 +118,14 @@ public class WriterLear {
 			idFamily = idFamilyInt.toString();
 			}
 		if(entityName.equals("PN") & attributName.equals("PNname") ){
-			namePartNumber = attributValue;
-			Integer idPartNumberInt = racd.getPartNumber(Integer.parseInt(idFamily),namePartNumber).getId();
-			idPartNumber = idPartNumberInt.toString();
-			arrayListIdPartNumber.add(idPartNumberInt);
+			nameCable = attributValue;
+			Integer idPartNumberInt = racd.getCables(Integer.parseInt(idFamily),nameCable).getId();
+			idCable = idPartNumberInt.toString();
+			arrayListIdCable.add(idPartNumberInt);
 
 			}
 		if(entityName.equals("FIXTURE") & attributName.equals("FIXTUREID")){
-			nameFixture = attributValue;
+			nameConnector = attributValue;
 			} 
 		
 		}

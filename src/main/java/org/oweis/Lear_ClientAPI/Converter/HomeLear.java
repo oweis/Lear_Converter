@@ -54,11 +54,12 @@ public class HomeLear implements ActionListener {
 		
 		 pathLabel = new JLabel("  Chemin du fichier : ");
 		
-		 pathText = new JTextArea(" . . . ");
+		 pathText = new JTextArea("");
+		 
 		
 		 familyLabel = new JLabel("  Nom de la famille : ");
 		
-		 familyText = new JTextArea(" . . . ");
+		 familyText = new JTextArea("");
 		 
 		
 		
@@ -89,11 +90,12 @@ public class HomeLear implements ActionListener {
 	}
 	public static void main(String args[]){
 		HomeLear home = new HomeLear();
+		
 	}
 
 	public boolean assertTesterFile(String pathText){
 		String extension = "";
-
+		
 		int i = pathText.lastIndexOf('.');
 		if (i > 0) {
 		    extension = pathText.substring(i+1);
@@ -133,9 +135,9 @@ public class HomeLear implements ActionListener {
 			else if(namePassByUser.equals("") || namePassByUser.equals(null)){
 				JOptionPane.showMessageDialog(frame, "S'il vous plait! choisissez un nom.");
 			}
-		//	else if(restAPIClientDesktop.assertNamePassByUserExist(namePassByUser)){
-			//	JOptionPane.showMessageDialog(frame, "Le nom que vous avez choisi est deja existe. essayer avec un autre nom");
-		//}
+			else if(restAPIClientDesktop.assertNamePassByUserExist(namePassByUser)){
+				JOptionPane.showMessageDialog(frame, "Le nom que vous avez choisi est deja existe. essayer avec un autre nom");
+		}
 			else {
 
 				ProgressSample progressSample = new ProgressSample();

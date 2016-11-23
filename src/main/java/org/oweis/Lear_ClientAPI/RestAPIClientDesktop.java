@@ -15,14 +15,14 @@ import org.oweis.Lear_ClientAPI.model.*;
 public class RestAPIClientDesktop {
 	
 	Family family = new Family();
-	PartNumber partNumber;
-	Fixture fixture;
+	Cable cable;
+	Connector connector;
 
 	Wire wire;
 	Splice splice;
 	
 	ArrayList<Wire> wires = new ArrayList<>();
-	ArrayList<PartNumber_Fixture> partNumber_Fixtures = new ArrayList<>();
+	ArrayList<Cable_Connector> cable_Connector = new ArrayList<>();
 	
 	Client client = ClientBuilder.newClient();
 	WebTarget baseTarget = client.target("http://localhost:8080/Lear_API/webapi/");
@@ -68,58 +68,58 @@ public class RestAPIClientDesktop {
 		return family;
 	}
 	
-	public PartNumber getPartNumber(int idFamily,String nameUsedInLear){
-		partNumber = valueTarget2.
-				resolveTemplate("entityName","partnumbers").
+	public Cable getCables(int idFamily,String nameUsedInLear){
+		cable = valueTarget2.
+				resolveTemplate("entityName","cables").
 				resolveTemplate("functionName", "search").
 				resolveTemplate("attributName", "idFamily").
 				resolveTemplate("attributValue",idFamily).
 				resolveTemplate("attributName2","nameUsedInLear").
 				resolveTemplate("attributValue2",nameUsedInLear).
 				request(MediaType.APPLICATION_JSON).
-				get(PartNumber.class);
+				get(Cable.class);
 	
-		return partNumber;
+		return cable;
 	}
 	
-	public Fixture getFixture(int idFamily,String nameFixture){
-		fixture = valueTarget2.
-				resolveTemplate("entityName","fixtures").
+	public Connector getConnector(int idFamily,String nameConnector){
+		connector = valueTarget2.
+				resolveTemplate("entityName","connectors").
 				resolveTemplate("functionName", "search").
 				resolveTemplate("attributName", "idFamily").
 				resolveTemplate("attributValue",idFamily).
-				resolveTemplate("attributName2","nameFixture").
-				resolveTemplate("attributValue2",nameFixture).
+				resolveTemplate("attributName2","nameConnector").
+				resolveTemplate("attributValue2",nameConnector).
 				request(MediaType.APPLICATION_JSON).
-				get(Fixture.class);
+				get(Connector.class);
 	
-		return fixture;
+		return connector;
 	}
 	
 
-	public ArrayList<Wire> getAllWiresByIdPartNumber(int idPartNumber){
+	public ArrayList<Wire> getAllWiresByIdCable(int idCable){
 		wires = valueTarget.
 				resolveTemplate("entityName","wires").
 				resolveTemplate("functionName", "search").
-				resolveTemplate("attributName", "idPartNumber").
-				resolveTemplate("attributValue",idPartNumber).
+				resolveTemplate("attributName", "idCable").
+				resolveTemplate("attributValue",idCable).
 				request(MediaType.APPLICATION_JSON).
 				get(new GenericType<ArrayList<Wire>>(){});
 	
 		return wires;
 	}
 	
-	public ArrayList<PartNumber_Fixture> addAllPartNumber_Fixtures(int idFamily,int idPartNumber){
-			partNumber_Fixtures = valueTarget2.
-				resolveTemplate("entityName","partnumber_fixtures").
+	public ArrayList<Cable_Connector> addAllCable_Connectors(int idFamily,int idCable){
+			cable_Connector = valueTarget2.
+				resolveTemplate("entityName","cable_connectors").
 				resolveTemplate("functionName", "search").
 				resolveTemplate("attributName", "idFamily").
 				resolveTemplate("attributValue",idFamily).
-				resolveTemplate("attributName2", "idPartNumber").
-				resolveTemplate("attributValue2",idPartNumber).
+				resolveTemplate("attributName2", "idCable").
+				resolveTemplate("attributValue2",idCable).
 				request(MediaType.APPLICATION_JSON)
-				.get(new GenericType<ArrayList<PartNumber_Fixture>>(){});
-	return partNumber_Fixtures;
+				.get(new GenericType<ArrayList<Cable_Connector>>(){});
+	return cable_Connector;
 	}
 	
 	
@@ -127,8 +127,8 @@ public class RestAPIClientDesktop {
 		return  entityTarget.resolveTemplate("entityName","familys").request().post(Entity.json(newFamily));
 	}
 	
-	public Response addPartNumber(PartNumber newPartNumber){
-		return	entityTarget.resolveTemplate("entityName","partnumbers").request().post(Entity.json(newPartNumber));
+	public Response addCable(Cable newCable){
+		return	entityTarget.resolveTemplate("entityName","cables").request().post(Entity.json(newCable));
 	}
 	
 	public Response addWire(Wire newWire){
@@ -139,8 +139,8 @@ public class RestAPIClientDesktop {
 		return	entityTarget.resolveTemplate("entityName","splices").request().post(Entity.json(newSplice));
 	}
 
-	public Response addFixture(Fixture newFixture){
-		return	entityTarget.resolveTemplate("entityName","fixtures").request().post(Entity.json(newFixture));
+	public Response addConnector(Connector newConnector){
+		return	entityTarget.resolveTemplate("entityName","connectors").request().post(Entity.json(newConnector));
 	}
 	
 	

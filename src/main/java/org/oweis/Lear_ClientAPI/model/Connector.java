@@ -5,21 +5,21 @@ import javax.ws.rs.core.Response;
 import org.oweis.Lear_ClientAPI.RestAPIClientDesktop;
 
 
-public class Fixture implements BaliseState{
+public class Connector implements BaliseState{
 	
 	private int id;
 	private int idFamily;
-	private String nameFixture;
+	private String nameConnector;
 
 	
-	public Fixture() {
+	public Connector() {
 		
 	}
 	
-	public Fixture(int id,int idFamily, String nameFixture) {
+	public Connector(int id,int idFamily, String nameConnector) {
 		this.id = id;
 		this.idFamily = idFamily;
-		this.nameFixture = nameFixture;
+		this.nameConnector = nameConnector;
 	
 	}
 	
@@ -39,12 +39,12 @@ public class Fixture implements BaliseState{
 		this.id = id;
 	}
 
-	public String getNameFixture() {
-		return nameFixture;
+	public String getNameConnector() {
+		return nameConnector;
 	}
 
-	public void setNameFixture(String nameFixture) {
-		this.nameFixture = nameFixture;
+	public void setNameConnector(String nameConnector) {
+		this.nameConnector = nameConnector;
 	}
 
 
@@ -54,7 +54,7 @@ public class Fixture implements BaliseState{
 		// TODO Auto-generated method stub	
 	}
 	public void getValuesForBalise(String attribut,String value){
-		if(attribut.equals("FIXTUREID")) nameFixture = value;
+		if(attribut.equals("FIXTUREID")) nameConnector = value;
 		if(attribut.equals("idFamily")) idFamily=Integer.parseInt(value);
 	}
 	
@@ -63,7 +63,7 @@ public class Fixture implements BaliseState{
 	
 	public Response saveBalise() {
 		RestAPIClientDesktop racd = new RestAPIClientDesktop();
-		return  racd.addFixture(this);
+		return  racd.addConnector(this);
 	};
 	
 }
