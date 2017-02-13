@@ -25,7 +25,7 @@ public class RestAPIClientDesktop {
 	ArrayList<Cable_Connector> cable_Connector = new ArrayList<>();
 	
 	Client client = ClientBuilder.newClient();
-	WebTarget baseTarget = client.target("http://localhost:8080/Lear_API/webapi/");
+	WebTarget baseTarget = client.target("http://localhost:8081/Lear_API/webapi/");
 	WebTarget entityTarget = baseTarget.path("{entityName}");
 	WebTarget functionTarget = entityTarget.path("{functionName}");
 	WebTarget attributTarget = functionTarget.path("{attributName}");
